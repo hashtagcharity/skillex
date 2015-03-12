@@ -1,6 +1,6 @@
 module.exports = {
     server: {
-        port: process.env.SERVER_PORT
+        port: process.env.PORT
     },
     db: {
         store: {
