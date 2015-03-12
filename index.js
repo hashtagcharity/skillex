@@ -6,8 +6,10 @@ var express = require('express'),
 
 var mongoose = mongoose.connect('mongodb://' + config.db.store.host + ':' + config.db.store.port + '/' + config.db.name);
 mongoose.connection.on('error', function(error) {
-    global.logger.error(error);
+    console.log(error);
 });
+
+console.log('Mongo services at ' + config.db.store.host + ':' + config.db.store.port + '/' + config.db.name);
 
 var app = express()
     .use(bodyParser.json());

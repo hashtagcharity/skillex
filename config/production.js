@@ -4,8 +4,9 @@ module.exports = {
     },
     db: {
         store: {
-            host: process.env.DATABASE_PORT_27017_TCP_ADDR,
+            host: process.env.DATABASE_HOST,
+            port: process.env.DATABASE_PORT
         },
         name: "charity"
     }
-}
+};
