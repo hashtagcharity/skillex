@@ -24,9 +24,10 @@ app.get('/healthcheck', function(req, res) {
 
 app.post('/api/skills', function(req, res) {
     var skills = req.body.skills;
+    console.log(skills);
 
     skills.forEach(function(skillName) {
-        process.process.nextTick(function(skillName) {
+        process.nextTick(function() {
             var skill = new Skill({
                 name: skillName
             });
