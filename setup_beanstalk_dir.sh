@@ -1,5 +1,7 @@
 #!/bin/sh
 
+rm -rd .ebextensions
+
 if [ "$CI_BRANCH" = "master" ]
 then
     cp -r .ebextensions-prod/ .ebextensions
