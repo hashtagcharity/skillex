@@ -14,38 +14,12 @@ console.log('Mongo services at ' + config.db.store.host + ':' + config.db.store.
 var app = express()
     .use(bodyParser.json());
 
-app.listen(config.server.port);
-
 console.log('Listening on ' + config.server.port);
+
+var v1Router = require('./api/v1Router');
+app.use('/api/v1', v1Router);
 
 app.get('/healthcheck', function(req, res) {
     res.send('yo');
 });
-
-app.post('/api/skills', function(req, res) {
-    var skills = req.body.skills;
-    console.log(skills);
-
-    skills.forEach(function(skillName) {
-        process.nextTick(function() {
-            var skill = new Skill({
-                name: skillName
-            });
-            skill.save(function(err) {
-                if (err && err.code === 11000) {
-                    console.log('Skill exists: %s', skillName);
-                    return;
-                }
-
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-
-                console.log('Skill added: %s', skillName);
-            });
-        });
-    });
-
-    res.end();
-});
+app.listen(config.server.port);
