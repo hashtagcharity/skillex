@@ -2,7 +2,7 @@
 
 export APP_VERSION=`git rev-parse --short HEAD`
 
-if [ "$CI_BRANCH" = "production" ]
+if [ "$CI_BRANCH" = "master" ]
 then
     cp -r .ebextensions-prod .ebextensions
 else
