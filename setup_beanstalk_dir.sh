@@ -1,6 +1,8 @@
 #!/bin/sh
 
-rm -rd .ebextensions
+if [ -d ".ebextensions" ]; then
+    rm -rd .ebextensions
+fi
 
 if [ "$CI_BRANCH" = "master" ]
 then
