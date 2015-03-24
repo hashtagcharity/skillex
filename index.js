@@ -14,6 +14,7 @@ console.log('Mongo services at ' + config.db.store.host + ':' + config.db.store.
 var app = express()
     .use(bodyParser.json());
 
+console.log('Running in ' + process.env.NODE_ENV);
 console.log('Listening on ' + config.server.port);
 
 var v1Router = require('./api/v1Router');
