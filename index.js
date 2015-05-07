@@ -5,7 +5,7 @@ var express = require('express'),
 
 var config = {
     server: {
-        port: 3000
+        port: process.env.PORT
     },
     db: {
         host: process.env.DB_HOST,
@@ -13,6 +13,12 @@ var config = {
         name: process.env.DB_NAME
     }
 };
+
+if (!config.server.port || !config.db.host || !config.db.port || !config.db.name) {
+    console.log('Please set all the required environment variables');
+    console.log('Current config %j', config);
+    process.exit(0);
+}
 
 var mongoose = mongoose.connect('mongodb://' + config.db.host + ':' + config.db.port + '/' + config.db.name);
 mongoose.connection.on('error', function(error) {
