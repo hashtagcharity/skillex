@@ -4,7 +4,7 @@ var express = require('express'),
     evcheck = require('evcheck'),
     Skill = require('./Skill');
 
-evcheck.checkVars(['PORT, DB_HOST, DB_PORT, DB_NAME'], function(err) {
+evcheck.checkVars(['PORT', 'DB_HOST', 'DB_PORT', 'DB_NAME'], function(err) {
     if (err) {
         console.log(err.message);
         process.exit(9);
