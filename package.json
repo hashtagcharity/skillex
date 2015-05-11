@@ -21,6 +21,7 @@
   "dependencies": {
     "body-parser": "~1",
     "config": "^1.12.0",
+    "evcheck": "0.0.3",
     "express": "^4.10.7",
     "mongoose": "^3.8.19"
   },
