@@ -1,7 +1,15 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    evcheck = require('evcheck'),
     Skill = require('./Skill');
+
+evcheck.checkVars(['PORT, DB_HOST, DB_PORT, DB_NAME'], function(err) {
+    if (err) {
+        console.log(err.message);
+        process.exit(9);
+    }
+});
 
 var config = {
     server: {
@@ -13,12 +21,6 @@ var config = {
         name: process.env.DB_NAME
     }
 };
-
-if (!config.server.port || !config.db.host || !config.db.port || !config.db.name) {
-    console.log('Please set all the required environment variables');
-    console.log('Current config %j', config);
-    process.exit(0);
-}
 
 var mongoose = mongoose.connect('mongodb://' + config.db.host + ':' + config.db.port + '/' + config.db.name);
 mongoose.connection.on('error', function(error) {
